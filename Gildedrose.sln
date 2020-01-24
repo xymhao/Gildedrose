@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gildedrose", "Gildedrose\Gildedrose.csproj", "{011F20A0-709F-4752-8796-52BC58603376}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedroseTests", "GildedroseTests\GildedroseTests.csproj", "{B2A009A1-BD64-4927-9156-36A0DF8D3CC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{011F20A0-709F-4752-8796-52BC58603376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011F20A0-709F-4752-8796-52BC58603376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011F20A0-709F-4752-8796-52BC58603376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011F20A0-709F-4752-8796-52BC58603376}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2A009A1-BD64-4927-9156-36A0DF8D3CC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2A009A1-BD64-4927-9156-36A0DF8D3CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2A009A1-BD64-4927-9156-36A0DF8D3CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2A009A1-BD64-4927-9156-36A0DF8D3CC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC45BD09-334D-4D79-B819-56F26C5FC281}
+	EndGlobalSection
+EndGlobal
