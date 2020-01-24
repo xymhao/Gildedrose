@@ -19,7 +19,7 @@ namespace GildedroseTests
         public void foo()
         {
             Goods[] items = new Goods[] { new Goods("foo", 1, 5) };
-            GildedRose app = new GildedRose(items);
+            var app = new GildedRose.GildedRose(items);
             app.update_quality();
             Assert.AreEqual("foo", app.items[0].Name);
             Assert.AreEqual(app.items[0].Quality, (4));
@@ -43,7 +43,7 @@ namespace GildedroseTests
                 // this conjured item does not work properly yet
                 new Goods("Conjured Mana Cake", 3, 6) };
 
-            GildedRose app = new GildedRose(items);
+            GildedRose.GildedRose app = new GildedRose.GildedRose(items);
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < 3; i++)
             {

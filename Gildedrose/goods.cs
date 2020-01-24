@@ -49,40 +49,18 @@ namespace GildedRose
 
             if (Name.Equals(BackstagePassesToATafkal80EtcConcert))
             {
-                
+                var ageBrie = new Tickets(Name, SellIn, Quality);
+                ageBrie.UpdateQuality();
+                Name = ageBrie.Name;
+                SellIn = ageBrie.SellIn;
+                Quality = ageBrie.Quality;
+                return;
             }
+
             var hasQuality = goods.Quality > 0;
             var isAgeBrie = goods.Name.Equals(AgedBrie);
             var isConcert = goods.Name.Equals(BackstagePassesToATafkal80EtcConcert);
 
-            if (isAgeBrie ||
-                isConcert)
-            {
-                if (goods.Quality < MaxQualityValue)
-                {
-                    goods.Quality += 1;
-
-                    if (isConcert)
-                    {
-                        if (goods.SellIn < 11)
-                        {
-                            if (goods.Quality < MaxQualityValue)
-                            {
-                                goods.Quality += 1;
-                            }
-                        }
-
-                        if (goods.SellIn < 6)
-                        {
-                            if (goods.Quality < MaxQualityValue)
-                            {
-                                goods.Quality += 1;
-                            }
-                        }
-                    }
-                }
-            }
-            else
             {
                 if (hasQuality)
                 {
@@ -94,14 +72,6 @@ namespace GildedRose
 
             if (goods.SellIn < 0)
             {
-                if (isAgeBrie)
-                {
-                    if (goods.Quality < MaxQualityValue)
-                    {
-                        goods.Quality += 1;
-                    }
-                }
-                else
                 {
                     if (isConcert)
                     {
