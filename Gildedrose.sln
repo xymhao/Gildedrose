@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gildedrose", "Gildedrose\Gildedrose.csproj", "{011F20A0-709F-4752-8796-52BC58603376}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose", "Gildedrose\GildedRose.csproj", "{011F20A0-709F-4752-8796-52BC58603376}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedroseTests", "GildedroseTests\GildedroseTests.csproj", "{B2A009A1-BD64-4927-9156-36A0DF8D3CC1}"
 EndProject

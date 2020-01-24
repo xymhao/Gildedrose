@@ -1,64 +1,82 @@
 ﻿using System;
 
-namespace Gildedrose
+namespace GildedRose
 {
     public class Goods
     {
-        private const string AgedBrie = "Aged Brie";
-        private const string BackstagePassesToATafkal80EtcConcert = "Backstage passes to a TAFKAL80ETC concert";
-        private const string SulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
-        private const int MaxQualityValue = 50;
+        protected const string AgedBrie = "Aged Brie";
+        protected const string BackstagePassesToATafkal80EtcConcert = "Backstage passes to a TAFKAL80ETC concert";
+        protected const string SulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
 
-        public string name;
+        protected const int MaxQualityValue = 50;
 
-        public int sell_in;
+        public string Name { get; set; }
 
-        public int quality;
+        public int SellIn { get; set; }
+
+        public int Quality { get; set; }
 
         public Goods(string name, int sell_in, int quality)
         {
-            this.name = name;
-            this.sell_in = sell_in;
-            this.quality = quality;
+            this.Name = name;
+            this.SellIn = sell_in;
+            this.Quality = quality;
+
         }
 
-        public string toString()
+        public string ToString()
         {
-            return this.name + ", " + this.sell_in + ", " + this.quality;
+            return Name + ", " + SellIn + ", " + Quality;
         }
 
-        public void UpdateQuality()
+        public virtual void UpdateQuality()
         {
             var goods = this;
-            if (goods.name.Equals(SulfurasHandOfRagnaros))
+            if (goods.Name.Equals(SulfurasHandOfRagnaros))
             {
                 return;
             }
 
-            var hasQuality = goods.quality > 0;
-
-            if (goods.name.Equals(AgedBrie) ||
-                goods.name.Equals(BackstagePassesToATafkal80EtcConcert))
+            if (goods.Name.Equals(AgedBrie))
             {
-                if (goods.quality < MaxQualityValue)
-                {
-                    goods.quality += 1;
+                var ageBrie = new AgeBrie(Name, SellIn, Quality);
+                ageBrie.UpdateQuality();
+                Name = ageBrie.Name;
+                SellIn = ageBrie.SellIn;
+                Quality = ageBrie.Quality;
+                return;
+            }
 
-                    if (goods.name.Equals(BackstagePassesToATafkal80EtcConcert))
+            if (Name.Equals(BackstagePassesToATafkal80EtcConcert))
+            {
+                
+            }
+            var hasQuality = goods.Quality > 0;
+            var isAgeBrie = goods.Name.Equals(AgedBrie);
+            var isConcert = goods.Name.Equals(BackstagePassesToATafkal80EtcConcert);
+
+            if (isAgeBrie ||
+                isConcert)
+            {
+                if (goods.Quality < MaxQualityValue)
+                {
+                    goods.Quality += 1;
+
+                    if (isConcert)
                     {
-                        if (goods.sell_in < 11)
+                        if (goods.SellIn < 11)
                         {
-                            if (goods.quality < MaxQualityValue)
+                            if (goods.Quality < MaxQualityValue)
                             {
-                                goods.quality += 1;
+                                goods.Quality += 1;
                             }
                         }
 
-                        if (goods.sell_in < 6)
+                        if (goods.SellIn < 6)
                         {
-                            if (goods.quality < MaxQualityValue)
+                            if (goods.Quality < MaxQualityValue)
                             {
-                                goods.quality += 1;
+                                goods.Quality += 1;
                             }
                         }
                     }
@@ -68,32 +86,32 @@ namespace Gildedrose
             {
                 if (hasQuality)
                 {
-                    goods.quality -= 1;
+                    goods.Quality -= 1;
                 }
             }
 
-            goods.sell_in -= 1;
+            goods.SellIn -= 1;
 
-            if (goods.sell_in < 0)
+            if (goods.SellIn < 0)
             {
-                if (goods.name.Equals(AgedBrie))
+                if (isAgeBrie)
                 {
-                    if (goods.quality < MaxQualityValue)
+                    if (goods.Quality < MaxQualityValue)
                     {
-                        goods.quality += 1;
+                        goods.Quality += 1;
                     }
                 }
                 else
                 {
-                    if (goods.name.Equals(BackstagePassesToATafkal80EtcConcert))
+                    if (isConcert)
                     {
-                        goods.quality -= goods.quality;
+                        goods.Quality -= goods.Quality;
                     }
                     else
                     {
                         if (hasQuality)
                         {
-                            goods.quality -= 1;
+                            goods.Quality -= 1;
                         }
                     }
                 }

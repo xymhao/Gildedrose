@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
-using Gildedrose;
+using GildedRose;
 
 namespace GildedroseTests
 {
@@ -21,9 +21,9 @@ namespace GildedroseTests
             Goods[] items = new Goods[] { new Goods("foo", 1, 5) };
             GildedRose app = new GildedRose(items);
             app.update_quality();
-            Assert.AreEqual("foo", app.items[0].name);
-            Assert.AreEqual(app.items[0].quality, (4));
-            Assert.AreEqual(app.items[0].sell_in, (0));
+            Assert.AreEqual("foo", app.items[0].Name);
+            Assert.AreEqual(app.items[0].Quality, (4));
+            Assert.AreEqual(app.items[0].SellIn, (0));
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace GildedroseTests
                 app.update_quality();
                 foreach (Goods item in items)
                 {
-                    builder.Append(item.toString());
+                    builder.Append(item.ToString());
                 }
             }
 

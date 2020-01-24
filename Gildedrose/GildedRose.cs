@@ -1,4 +1,4 @@
-﻿namespace Gildedrose
+﻿namespace GildedRose
 {
     public class GildedRose
     {
