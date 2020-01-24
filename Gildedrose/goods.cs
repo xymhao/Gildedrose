@@ -7,6 +7,7 @@ namespace Gildedrose
         private const string AgedBrie = "Aged Brie";
         private const string BackstagePassesToATafkal80EtcConcert = "Backstage passes to a TAFKAL80ETC concert";
         private const string SulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
+        private const int MaxQualityValue = 50;
 
         public string name;
 
@@ -29,28 +30,35 @@ namespace Gildedrose
         public void UpdateQuality()
         {
             var goods = this;
+            if (goods.name.Equals(SulfurasHandOfRagnaros))
+            {
+                return;
+            }
+
+            var hasQuality = goods.quality > 0;
+
             if (goods.name.Equals(AgedBrie) ||
                 goods.name.Equals(BackstagePassesToATafkal80EtcConcert))
             {
-                if (goods.quality < 50)
+                if (goods.quality < MaxQualityValue)
                 {
-                    goods.quality = goods.quality + 1;
+                    goods.quality += 1;
 
                     if (goods.name.Equals(BackstagePassesToATafkal80EtcConcert))
                     {
                         if (goods.sell_in < 11)
                         {
-                            if (goods.quality < 50)
+                            if (goods.quality < MaxQualityValue)
                             {
-                                goods.quality = goods.quality + 1;
+                                goods.quality += 1;
                             }
                         }
 
                         if (goods.sell_in < 6)
                         {
-                            if (goods.quality < 50)
+                            if (goods.quality < MaxQualityValue)
                             {
-                                goods.quality = goods.quality + 1;
+                                goods.quality += 1;
                             }
                         }
                     }
@@ -58,43 +66,34 @@ namespace Gildedrose
             }
             else
             {
-                if (goods.quality > 0)
+                if (hasQuality)
                 {
-                    if (!goods.name.Equals(SulfurasHandOfRagnaros))
-                    {
-                        goods.quality = goods.quality - 1;
-                    }
+                    goods.quality -= 1;
                 }
             }
 
-            if (!goods.name.Equals(SulfurasHandOfRagnaros))
-            {
-                goods.sell_in = goods.sell_in - 1;
-            }
+            goods.sell_in -= 1;
 
             if (goods.sell_in < 0)
             {
                 if (goods.name.Equals(AgedBrie))
                 {
-                    if (goods.quality < 50)
+                    if (goods.quality < MaxQualityValue)
                     {
-                        goods.quality = goods.quality + 1;
+                        goods.quality += 1;
                     }
                 }
                 else
                 {
                     if (goods.name.Equals(BackstagePassesToATafkal80EtcConcert))
                     {
-                        goods.quality = goods.quality - goods.quality;
+                        goods.quality -= goods.quality;
                     }
                     else
                     {
-                        if (goods.quality > 0)
+                        if (hasQuality)
                         {
-                            if (!goods.name.Equals(SulfurasHandOfRagnaros))
-                            {
-                                goods.quality = goods.quality - 1;
-                            }
+                            goods.quality -= 1;
                         }
                     }
                 }
