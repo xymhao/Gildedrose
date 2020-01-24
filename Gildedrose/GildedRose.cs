@@ -2,9 +2,6 @@
 {
     public class GildedRose
     {
-        private const string AgedBrie = "Aged Brie";
-        private const string BackstagePassesToATafkal80EtcConcert = "Backstage passes to a TAFKAL80ETC concert";
-        private const string SulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
         public Goods[] items;
 
         public GildedRose(Goods[] items)
@@ -14,9 +11,8 @@
 
         public void update_quality()
         {
-            for (int i = 0; i < items.Length; i++)
+            foreach (var goods in items)
             {
-                var goods = items[i];
                 goods.UpdateQuality();
             }
         }

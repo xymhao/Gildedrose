@@ -2,7 +2,7 @@
 {
     public class AgeBrie : Goods
     {
-        public AgeBrie(string name, int sellIn, int quality) : base(name, sellIn, quality)
+        public AgeBrie(int sellIn, int quality) : base("Aged Brie", sellIn, quality)
         {
 
         }

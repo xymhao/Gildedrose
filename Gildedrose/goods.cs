@@ -1,13 +1,7 @@
-﻿using System;
-
-namespace GildedRose
+﻿namespace GildedRose
 {
     public class Goods
     {
-        protected const string AgedBrie = "Aged Brie";
-        protected const string BackstagePassesToATafkal80EtcConcert = "Backstage passes to a TAFKAL80ETC concert";
-        protected const string SulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
-
         protected const int MaxQualityValue = 50;
 
         public string Name { get; set; }
@@ -16,77 +10,32 @@ namespace GildedRose
 
         public int Quality { get; set; }
 
-        public Goods(string name, int sell_in, int quality)
+        public Goods(string name, int sellIn, int quality)
         {
-            this.Name = name;
-            this.SellIn = sell_in;
-            this.Quality = quality;
+            Name = name;
+            SellIn = sellIn;
+            Quality = quality;
 
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return Name + ", " + SellIn + ", " + Quality;
         }
 
         public virtual void UpdateQuality()
         {
-            var goods = this;
-            if (goods.Name.Equals(SulfurasHandOfRagnaros))
+            SellIn -= 1;
+
+            ReduceQuality(SellIn < 0 ? 2 : 1);
+        }
+
+        protected void ReduceQuality(int quality)
+        {
+            if (Quality > 0)
             {
-                return;
+                Quality -= quality;
             }
-
-            if (goods.Name.Equals(AgedBrie))
-            {
-                var ageBrie = new AgeBrie(Name, SellIn, Quality);
-                ageBrie.UpdateQuality();
-                Name = ageBrie.Name;
-                SellIn = ageBrie.SellIn;
-                Quality = ageBrie.Quality;
-                return;
-            }
-
-            if (Name.Equals(BackstagePassesToATafkal80EtcConcert))
-            {
-                var ageBrie = new Tickets(Name, SellIn, Quality);
-                ageBrie.UpdateQuality();
-                Name = ageBrie.Name;
-                SellIn = ageBrie.SellIn;
-                Quality = ageBrie.Quality;
-                return;
-            }
-
-            var hasQuality = goods.Quality > 0;
-            var isAgeBrie = goods.Name.Equals(AgedBrie);
-            var isConcert = goods.Name.Equals(BackstagePassesToATafkal80EtcConcert);
-
-            {
-                if (hasQuality)
-                {
-                    goods.Quality -= 1;
-                }
-            }
-
-            goods.SellIn -= 1;
-
-            if (goods.SellIn < 0)
-            {
-                {
-                    if (isConcert)
-                    {
-                        goods.Quality -= goods.Quality;
-                    }
-                    else
-                    {
-                        if (hasQuality)
-                        {
-                            goods.Quality -= 1;
-                        }
-                    }
-                }
-            }
-
         }
     }
 }
