@@ -2,7 +2,7 @@
 
 namespace Gildedrose
 {
-    public class Item
+    public class Goods
     {
 
         public string name;
@@ -11,7 +11,7 @@ namespace Gildedrose
 
         public int quality;
 
-        public Item(string name, int sell_in, int quality)
+        public Goods(string name, int sell_in, int quality)
         {
             this.name = name;
             this.sell_in = sell_in;
