@@ -13,8 +13,8 @@
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (!items[i].name.Equals("Aged Brie")
-                        && !items[i].name.Equals("Backstage passes to a TAFKAL80ETC concert"))
+                if (!items[i].name.Equals("Aged Brie") 
+                    && !items[i].name.Equals("Backstage passes to a TAFKAL80ETC concert"))
                 {
                     if (items[i].quality > 0)
                     {
