@@ -18,9 +18,9 @@ namespace Gildedrose
             this.quality = quality;
         }
 
-        public string toString()
+        public override string ToString()
         {
-            return this.name + ", " + this.sell_in + ", " + this.quality;
+            return name + ", " + sell_in + ", " + quality;
         }
     }
 }
